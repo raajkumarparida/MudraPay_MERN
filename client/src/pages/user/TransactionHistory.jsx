@@ -5,7 +5,7 @@ import {
   Download, Search, Loader, Gift
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../api/api.js';
 
 const TransactionHistory = () => {
   const navigate = useNavigate();
@@ -21,8 +21,8 @@ const TransactionHistory = () => {
 
   const fetchTransactions = async () => {
     try {
-      const response = await axios.get(
-        'http://localhost:8000/api/user/transactions',
+      const response = await api.get(
+        '/user/transactions',
         { withCredentials: true }
       );
 

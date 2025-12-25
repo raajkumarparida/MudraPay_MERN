@@ -10,7 +10,7 @@ import {
   Medal, Award, Star, Sparkles, DollarSign
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api/api.js';
 import { Html5QrcodeScanner } from 'html5-qrcode';
 import Swat from 'sweetalert2'
 import UserRedemptionTracker from './UserRedemptionTracker';
@@ -60,8 +60,8 @@ const Dashboard = () => {
 
   const fetchUserData = async () => {
     try {
-      const authCheck = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/auth/is-auth',
+      const authCheck = await api.post(
+        '/auth/is-auth',
         {},
         { withCredentials: true }
       );
@@ -71,8 +71,8 @@ const Dashboard = () => {
         return;
       }
 
-      const response = await axios.get(
-        'https://mudrapay-mern.onrender.com/api/user/data',
+      const response = await api.get(
+        '/user/data',
         { withCredentials: true }
       );
 
@@ -91,8 +91,8 @@ const Dashboard = () => {
 
   const fetchRecentTransactions = async () => {
     try {
-      const response = await axios.get(
-        'https://mudrapay-mern.onrender.com/api/user/recent-transactions',
+      const response = await api.get(
+        '/user/recent-transactions',
         { withCredentials: true }
       );
 
@@ -129,8 +129,8 @@ const Dashboard = () => {
     setCashbackRedeemMessage({ type: '', text: '' });
 
     try {
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/cashback/request-redemption',
+      const response = await api.post(
+        '/cashback/request-redemption',
         cashbackRedeemForm,
         { withCredentials: true }
       );
@@ -166,8 +166,8 @@ const Dashboard = () => {
 
   const fetchTopCashbackUsers = async () => {
     try {
-      const response = await axios.get(
-        'https://mudrapay-mern.onrender.com/api/user/leaderboard',
+      const response = await api.get(
+        '/user/leaderboard',
         { withCredentials: true }
       );
 
@@ -181,8 +181,8 @@ const Dashboard = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/auth/logout',
+      const response = await api.post(
+        '/auth/logout',
         {},
         { withCredentials: true }
       );
@@ -198,8 +198,8 @@ const Dashboard = () => {
 
   const handleSendVerifyOtp = async () => {
     try {
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/auth/send-verify-otp',
+      const response = await api.post(
+        '/auth/send-verify-otp',
         {},
         { withCredentials: true }
       );
@@ -285,8 +285,8 @@ const Dashboard = () => {
     setRedeemMessage({ type: '', text: '' });
 
     try {
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/user/redeem-code',
+      const response = await api.post(
+        '/user/redeem-code',
         { code: redeemCodeInput.toUpperCase() },
         { withCredentials: true }
       );
@@ -332,8 +332,8 @@ const Dashboard = () => {
     setPinError('');
 
     try {
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/user/send-money',
+      const response = await api.post(
+        '/user/send-money',
         {
           ...pendingPayment,
           upiPin: upiPin

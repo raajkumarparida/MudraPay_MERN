@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, CheckCircle, AlertCircle, Loader, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../api/api.js';
 
 const EmailVerify = () => {
   const navigate = useNavigate();
@@ -41,8 +41,8 @@ const EmailVerify = () => {
     setMessage({ type: '', text: '' });
 
     try {
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/auth/verify-acount',
+      const response = await api.post(
+        '/auth/verify-acount',
         { otp: otpValue },
         { withCredentials: true }
       );
@@ -70,8 +70,8 @@ const EmailVerify = () => {
     setMessage({ type: '', text: '' });
 
     try {
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/auth/send-verify-otp',
+      const response = await api.post(
+        '/auth/send-verify-otp',
         {},
         { withCredentials: true }
       );

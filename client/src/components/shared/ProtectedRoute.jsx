@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Loader } from 'lucide-react';
+import api from "../../api/api.js"
 
 const ProtectedRoute = ({ children, requireAdmin = false }) => {
   const navigate = useNavigate();
@@ -14,8 +15,8 @@ const ProtectedRoute = ({ children, requireAdmin = false }) => {
 
   const checkAuth = async () => {
     try {
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/auth/is-auth',
+      const response = await api.post(
+        '/auth/is-auth',
         {},
         { withCredentials: true }
       );

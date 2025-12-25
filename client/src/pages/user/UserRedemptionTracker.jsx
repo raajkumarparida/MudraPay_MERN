@@ -3,7 +3,7 @@ import {
   Gift, DollarSign, Clock, CheckCircle, XCircle, AlertCircle,
   Calendar, Eye, X, ArrowUpRight, Loader, RefreshCw, History
 } from 'lucide-react';
-import axios from 'axios';
+import api from '../../api/api.js';
 
 const UserRedemptionTracker = ({ userData }) => {
   const [redemptions, setRedemptions] = useState([]);
@@ -18,8 +18,8 @@ const UserRedemptionTracker = ({ userData }) => {
   const fetchRedemptions = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(
-        'http://localhost:8000/api/cashback/my-redemptions',
+      const response = await api.get(
+        '/cashback/my-redemptions',
         { withCredentials: true }
       );
 

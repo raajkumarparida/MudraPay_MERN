@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, User, CheckCircle, AlertCircle, Loader, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../api/api.js';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -36,8 +36,8 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/auth/register',
+      const response = await api.post(
+        '/auth/register',
         formData,
         { withCredentials: true }
       );

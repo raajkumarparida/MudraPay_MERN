@@ -5,6 +5,7 @@ import {
   Loader, TrendingUp, ArrowUpRight, Copy
 } from 'lucide-react';
 import axios from 'axios';
+import api from '../../api/api.js';
 
 const CashbackRedemptionAdmin = () => {
   const [loading, setLoading] = useState(true);
@@ -30,8 +31,8 @@ const CashbackRedemptionAdmin = () => {
   const fetchRedemptionRequests = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(
-        `https://mudrapay-mern.onrender.com/api/cashback/redemption-requests?status=${filterStatus}`,
+      const response = await api.get(
+        `/cashback/redemption-requests?status=${filterStatus}`,
         { withCredentials: true }
       );
 
@@ -51,8 +52,8 @@ const CashbackRedemptionAdmin = () => {
       setActionLoading(true);
       setActionMessage({ type: '', text: '' });
 
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/cashback/approve-redemption',
+      const response = await api.post(
+        '/cashback/approve-redemption',
         { redemptionId: requestId },
         { withCredentials: true }
       );
@@ -91,8 +92,8 @@ const CashbackRedemptionAdmin = () => {
       setActionLoading(true);
       setActionMessage({ type: '', text: '' });
 
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/cashback/complete-redemption',
+      const response = await api.post(
+        '/cashback/complete-redemption',
         { 
           redemptionId: requestId,
           transactionProof 
@@ -143,8 +144,8 @@ const CashbackRedemptionAdmin = () => {
       setActionLoading(true);
       setActionMessage({ type: '', text: '' });
 
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/cashback/reject-redemption',
+      const response = await api.post(
+        '/cashback/reject-redemption',
         { 
           redemptionId: requestId,
           reason: rejectionReason 

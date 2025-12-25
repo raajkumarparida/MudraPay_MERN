@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Shield, Loader } from 'lucide-react';
+import api from "../../api/api.js"
 
 const AuthRedirect = () => {
   const navigate = useNavigate();
@@ -12,8 +13,8 @@ const AuthRedirect = () => {
 
   const checkAuthAndRedirect = async () => {
     try {
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/auth/is-auth',
+      const response = await api.post(
+        '/auth/is-auth',
         {},
         { withCredentials: true }
       );

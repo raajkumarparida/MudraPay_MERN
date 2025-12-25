@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Mail, Lock, CheckCircle, AlertCircle, Loader, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../api/api.js';
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -29,8 +29,8 @@ const ResetPassword = () => {
     setMessage({ type: '', text: '' });
 
     try {
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/auth/send-reset-otp',
+      const response = await api.post(
+        '/auth/send-reset-otp',
         { email: formData.email }
       );
 
@@ -62,8 +62,8 @@ const ResetPassword = () => {
     }
 
     try {
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/auth/reset-password',
+      const response = await api.post(
+        '/auth/reset-password',
         {
           email: formData.email,
           otp: formData.otp,

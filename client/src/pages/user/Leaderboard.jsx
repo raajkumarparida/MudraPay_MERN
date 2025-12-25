@@ -4,7 +4,7 @@ import {
   Sparkles, Award, ArrowUp, ArrowDown, User, Zap, X
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../api/api.js';
 
 const Leaderboard = () => {
   const navigate = useNavigate();
@@ -20,8 +20,8 @@ const Leaderboard = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await axios.get(
-        'http://localhost:8000/api/user/data',
+      const response = await api.get(
+        '/user/data',
         { withCredentials: true }
       );
       if (response.data.success) {
@@ -34,8 +34,8 @@ const Leaderboard = () => {
 
   const fetchLeaderboard = async () => {
     try {
-      const response = await axios.get(
-        'http://localhost:8000/api/user/leaderboard',
+      const response = await api.get(
+        '/user/leaderboard',
         { withCredentials: true }
       );
 

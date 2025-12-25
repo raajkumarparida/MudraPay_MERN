@@ -5,7 +5,7 @@ import {
   Activity, Award, AlertCircle, Check, X, Loader, Eye, ChevronRight
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../api/api.js';
 
 const StockPage = () => {
   const navigate = useNavigate();
@@ -41,8 +41,8 @@ const StockPage = () => {
 
   const checkAuth = async () => {
     try {
-      const response = await axios.post(
-        'http://localhost:8000/api/auth/is-auth',
+      const response = await api.post(
+        '/auth/is-auth',
         {},
         { withCredentials: true }
       );
@@ -73,8 +73,8 @@ const StockPage = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await axios.get(
-        'http://localhost:8000/api/user/data',
+      const response = await api.get(
+        '/user/data',
         { withCredentials: true }
       );
 
@@ -88,8 +88,8 @@ const StockPage = () => {
 
   const fetchStocks = async () => {
     try {
-      const response = await axios.get(
-        'http://localhost:8000/api/stocks/all',
+      const response = await api.get(
+        '/stocks/all',
         { withCredentials: true }
       );
 
@@ -103,8 +103,8 @@ const StockPage = () => {
 
   const fetchPortfolio = async () => {
     try {
-      const response = await axios.get(
-        'http://localhost:8000/api/stocks/portfolio',
+      const response = await api.get(
+        '/stocks/portfolio',
         { withCredentials: true }
       );
 
@@ -119,8 +119,8 @@ const StockPage = () => {
 
   const fetchTransactions = async () => {
     try {
-      const response = await axios.get(
-        'http://localhost:8000/api/stocks/transactions',
+      const response = await api.get(
+        '/stocks/transactions',
         { withCredentials: true }
       );
 
@@ -159,10 +159,10 @@ const StockPage = () => {
 
     try {
       const endpoint = tradeType === 'buy' 
-        ? 'http://localhost:8000/api/stocks/buy'
-        : 'http://localhost:8000/api/stocks/sell';
+        ? '/stocks/buy'
+        : '/stocks/sell';
 
-      const response = await axios.post(
+      const response = await api.post(
         endpoint,
         {
           symbol: selectedStock.symbol,

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Eye, EyeOff, Mail, Lock, CheckCircle, AlertCircle, Loader, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../api/api.js';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,8 +21,8 @@ const Login = () => {
 
   const checkAuth = async () => {
     try {
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/auth/is-auth',
+      const response = await api.post(
+        '/auth/is-auth',
         {},
         { withCredentials: true }
       );
@@ -52,8 +52,8 @@ const Login = () => {
     setMessage({ type: '', text: '' });
 
     try {
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/auth/login',
+      const response = await api.post(
+        '/auth/login',
         formData,
         { withCredentials: true }
       );
@@ -82,8 +82,8 @@ const Login = () => {
   //   setMessage({ type: '', text: '' });
 
   //   try {
-  //     const response = await axios.post(
-  //       'https://mudrapay-mern.onrender.com/api/auth/login',
+  //     const response = await api.post(
+  //       '/auth/login',
   //       formData,
   //       { withCredentials: true }
   //     );
@@ -95,8 +95,8 @@ const Login = () => {
   //       });
 
   //       // Check auth status and redirect accordingly
-  //       const authCheck = await axios.post(
-  //         'https://mudrapay-mern.onrender.com/api/auth/is-auth',
+  //       const authCheck = await api.post(
+  //         '/auth/is-auth',
   //         {},
   //         { withCredentials: true }
   //       );
@@ -136,8 +136,8 @@ const Login = () => {
     setMessage({ type: '', text: '' });
 
     try {
-      const response = await axios.post(
-        'https://mudrapay-mern.onrender.com/api/auth/login',
+      const response = await api.post(
+        '/auth/login',
         formData,
         { withCredentials: true }
       );
@@ -149,8 +149,8 @@ const Login = () => {
         });
 
         // ✅ Check auth immediately after login
-        const authCheck = await axios.post(
-          'https://mudrapay-mern.onrender.com/api/auth/is-auth',
+        const authCheck = await api.post(
+          '/auth/is-auth',
           {},
           { withCredentials: true }
         );

@@ -10,7 +10,7 @@ import {
   Medal, Award, Star, Sparkles, DollarSign
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../api/api.js';
 import { Html5QrcodeScanner } from 'html5-qrcode';
 import Swat from 'sweetalert2'
 import UserRedemptionTracker from './UserRedemptionTracker';
@@ -60,8 +60,8 @@ const Dashboard = () => {
 
   const fetchUserData = async () => {
     try {
-      const authCheck = await axios.post(
-        'http://localhost:8000/api/auth/is-auth',
+      const authCheck = await api.post(
+        '/auth/is-auth',
         {},
         { withCredentials: true }
       );
@@ -72,7 +72,7 @@ const Dashboard = () => {
       }
 
       const response = await axios.get(
-        'http://localhost:8000/api/user/data',
+        '/user/data',
         { withCredentials: true }
       );
 
@@ -92,7 +92,7 @@ const Dashboard = () => {
   const fetchRecentTransactions = async () => {
     try {
       const response = await axios.get(
-        'http://localhost:8000/api/user/recent-transactions',
+        '/user/recent-transactions',
         { withCredentials: true }
       );
 
@@ -130,7 +130,7 @@ const Dashboard = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/cashback/request-redemption',
+        '/cashback/request-redemption',
         cashbackRedeemForm,
         { withCredentials: true }
       );
@@ -167,7 +167,7 @@ const Dashboard = () => {
   const fetchTopCashbackUsers = async () => {
     try {
       const response = await axios.get(
-        'http://localhost:8000/api/user/leaderboard',
+        '/user/leaderboard',
         { withCredentials: true }
       );
 
@@ -182,7 +182,7 @@ const Dashboard = () => {
   const handleLogout = async () => {
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/auth/logout',
+        '/auth/logout',
         {},
         { withCredentials: true }
       );
@@ -199,7 +199,7 @@ const Dashboard = () => {
   const handleSendVerifyOtp = async () => {
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/auth/send-verify-otp',
+        '/auth/send-verify-otp',
         {},
         { withCredentials: true }
       );
@@ -286,7 +286,7 @@ const Dashboard = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/user/redeem-code',
+        '/user/redeem-code',
         { code: redeemCodeInput.toUpperCase() },
         { withCredentials: true }
       );
@@ -333,7 +333,7 @@ const Dashboard = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/user/send-money',
+        '/user/send-money',
         {
           ...pendingPayment,
           upiPin: upiPin
