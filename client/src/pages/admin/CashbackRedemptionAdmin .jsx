@@ -31,7 +31,7 @@ const CashbackRedemptionAdmin = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://localhost:8000/api/cashback/redemption-requests?status=${filterStatus}`,
+        `https://mudrapay-mern.onrender.com/api/cashback/redemption-requests?status=${filterStatus}`,
         { withCredentials: true }
       );
 
@@ -52,7 +52,7 @@ const CashbackRedemptionAdmin = () => {
       setActionMessage({ type: '', text: '' });
 
       const response = await axios.post(
-        'http://localhost:8000/api/cashback/approve-redemption',
+        'https://mudrapay-mern.onrender.com/api/cashback/approve-redemption',
         { redemptionId: requestId },
         { withCredentials: true }
       );
@@ -92,7 +92,7 @@ const CashbackRedemptionAdmin = () => {
       setActionMessage({ type: '', text: '' });
 
       const response = await axios.post(
-        'http://localhost:8000/api/cashback/complete-redemption',
+        'https://mudrapay-mern.onrender.com/api/cashback/complete-redemption',
         { 
           redemptionId: requestId,
           transactionProof 
@@ -144,7 +144,7 @@ const CashbackRedemptionAdmin = () => {
       setActionMessage({ type: '', text: '' });
 
       const response = await axios.post(
-        'http://localhost:8000/api/cashback/reject-redemption',
+        'https://mudrapay-mern.onrender.com/api/cashback/reject-redemption',
         { 
           redemptionId: requestId,
           reason: rejectionReason 

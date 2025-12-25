@@ -22,7 +22,7 @@ const Login = () => {
   const checkAuth = async () => {
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/auth/is-auth',
+        'https://mudrapay-mern.onrender.com/api/auth/is-auth',
         {},
         { withCredentials: true }
       );
@@ -53,7 +53,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/auth/login',
+        'https://mudrapay-mern.onrender.com/api/auth/login',
         formData,
         { withCredentials: true }
       );
@@ -83,7 +83,7 @@ const Login = () => {
 
   //   try {
   //     const response = await axios.post(
-  //       'http://localhost:8000/api/auth/login',
+  //       'https://mudrapay-mern.onrender.com/api/auth/login',
   //       formData,
   //       { withCredentials: true }
   //     );
@@ -96,7 +96,7 @@ const Login = () => {
 
   //       // Check auth status and redirect accordingly
   //       const authCheck = await axios.post(
-  //         'http://localhost:8000/api/auth/is-auth',
+  //         'https://mudrapay-mern.onrender.com/api/auth/is-auth',
   //         {},
   //         { withCredentials: true }
   //       );
@@ -137,7 +137,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/auth/login',
+        'https://mudrapay-mern.onrender.com/api/auth/login',
         formData,
         { withCredentials: true }
       );
@@ -150,7 +150,7 @@ const Login = () => {
 
         // ✅ Check auth immediately after login
         const authCheck = await axios.post(
-          'http://localhost:8000/api/auth/is-auth',
+          'https://mudrapay-mern.onrender.com/api/auth/is-auth',
           {},
           { withCredentials: true }
         );

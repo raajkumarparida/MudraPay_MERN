@@ -42,7 +42,7 @@ const EmailVerify = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/auth/verify-acount',
+        'https://mudrapay-mern.onrender.com/api/auth/verify-acount',
         { otp: otpValue },
         { withCredentials: true }
       );
@@ -71,7 +71,7 @@ const EmailVerify = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/auth/send-verify-otp',
+        'https://mudrapay-mern.onrender.com/api/auth/send-verify-otp',
         {},
         { withCredentials: true }
       );

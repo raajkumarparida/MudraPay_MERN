@@ -61,7 +61,7 @@ const Dashboard = () => {
   const fetchUserData = async () => {
     try {
       const authCheck = await axios.post(
-        'http://localhost:8000/api/auth/is-auth',
+        'https://mudrapay-mern.onrender.com/api/auth/is-auth',
         {},
         { withCredentials: true }
       );
@@ -72,7 +72,7 @@ const Dashboard = () => {
       }
 
       const response = await axios.get(
-        'http://localhost:8000/api/user/data',
+        'https://mudrapay-mern.onrender.com/api/user/data',
         { withCredentials: true }
       );
 
@@ -92,7 +92,7 @@ const Dashboard = () => {
   const fetchRecentTransactions = async () => {
     try {
       const response = await axios.get(
-        'http://localhost:8000/api/user/recent-transactions',
+        'https://mudrapay-mern.onrender.com/api/user/recent-transactions',
         { withCredentials: true }
       );
 
@@ -130,7 +130,7 @@ const Dashboard = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/cashback/request-redemption',
+        'https://mudrapay-mern.onrender.com/api/cashback/request-redemption',
         cashbackRedeemForm,
         { withCredentials: true }
       );
@@ -167,7 +167,7 @@ const Dashboard = () => {
   const fetchTopCashbackUsers = async () => {
     try {
       const response = await axios.get(
-        'http://localhost:8000/api/user/leaderboard',
+        'https://mudrapay-mern.onrender.com/api/user/leaderboard',
         { withCredentials: true }
       );
 
@@ -182,7 +182,7 @@ const Dashboard = () => {
   const handleLogout = async () => {
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/auth/logout',
+        'https://mudrapay-mern.onrender.com/api/auth/logout',
         {},
         { withCredentials: true }
       );
@@ -199,7 +199,7 @@ const Dashboard = () => {
   const handleSendVerifyOtp = async () => {
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/auth/send-verify-otp',
+        'https://mudrapay-mern.onrender.com/api/auth/send-verify-otp',
         {},
         { withCredentials: true }
       );
@@ -286,7 +286,7 @@ const Dashboard = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/user/redeem-code',
+        'https://mudrapay-mern.onrender.com/api/user/redeem-code',
         { code: redeemCodeInput.toUpperCase() },
         { withCredentials: true }
       );
@@ -333,7 +333,7 @@ const Dashboard = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/user/send-money',
+        'https://mudrapay-mern.onrender.com/api/user/send-money',
         {
           ...pendingPayment,
           upiPin: upiPin

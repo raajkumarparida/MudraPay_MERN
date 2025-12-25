@@ -15,7 +15,7 @@ const ProtectedRoute = ({ children, requireAdmin = false }) => {
   const checkAuth = async () => {
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/auth/is-auth',
+        'https://mudrapay-mern.onrender.com/api/auth/is-auth',
         {},
         { withCredentials: true }
       );

@@ -57,7 +57,7 @@ const AdminDashboard = () => {
   const checkAdminAuth = async () => {
     try {
       const authCheck = await axios.post(
-        'http://localhost:8000/api/auth/is-auth',
+        'https://mudrapay-mern.onrender.com/api/auth/is-auth',
         {},
         { withCredentials: true }
       );
@@ -76,8 +76,8 @@ const AdminDashboard = () => {
       setLoading(true);
 
       const [statsRes, codesRes] = await Promise.all([
-        axios.get('http://localhost:8000/api/admin/redeem-stats', { withCredentials: true }),
-        axios.get('http://localhost:8000/api/admin/redeem-codes', { withCredentials: true })
+        axios.get('https://mudrapay-mern.onrender.com/api/admin/redeem-stats', { withCredentials: true }),
+        axios.get('https://mudrapay-mern.onrender.com/api/admin/redeem-codes', { withCredentials: true })
       ]);
 
       if (statsRes.data.success) {
@@ -97,7 +97,7 @@ const AdminDashboard = () => {
   const fetchCashbackRequests = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/cashback/redemption-requests?status=${filterStatus}`,
+        `https://mudrapay-mern.onrender.com/api/cashback/redemption-requests?status=${filterStatus}`,
         { withCredentials: true }
       );
 
@@ -116,7 +116,7 @@ const AdminDashboard = () => {
       setActionMessage({ type: '', text: '' });
 
       const response = await axios.post(
-        'http://localhost:8000/api/cashback/approve-redemption',
+        'https://mudrapay-mern.onrender.com/api/cashback/approve-redemption',
         { redemptionId: requestId },
         { withCredentials: true }
       );
@@ -156,7 +156,7 @@ const AdminDashboard = () => {
       setActionMessage({ type: '', text: '' });
 
       const response = await axios.post(
-        'http://localhost:8000/api/cashback/complete-redemption',
+        'https://mudrapay-mern.onrender.com/api/cashback/complete-redemption',
         { 
           redemptionId: requestId,
           transactionProof 
@@ -208,7 +208,7 @@ const AdminDashboard = () => {
       setActionMessage({ type: '', text: '' });
 
       const response = await axios.post(
-        'http://localhost:8000/api/cashback/reject-redemption',
+        'https://mudrapay-mern.onrender.com/api/cashback/reject-redemption',
         { 
           redemptionId: requestId,
           reason: rejectionReason 
@@ -248,7 +248,7 @@ const AdminDashboard = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:8000/api/auth/logout', {}, { withCredentials: true });
+      await axios.post('https://mudrapay-mern.onrender.com/api/auth/logout', {}, { withCredentials: true });
       navigate('/login', { replace: true });
     } catch (error) {
       console.error('Logout error:', error);
@@ -271,7 +271,7 @@ const AdminDashboard = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/admin/create-redeem-code',
+        'https://mudrapay-mern.onrender.com/api/admin/create-redeem-code',
         createForm,
         { withCredentials: true }
       );

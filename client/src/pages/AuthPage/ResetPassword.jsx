@@ -30,7 +30,7 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/auth/send-reset-otp',
+        'https://mudrapay-mern.onrender.com/api/auth/send-reset-otp',
         { email: formData.email }
       );
 
@@ -63,7 +63,7 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/auth/reset-password',
+        'https://mudrapay-mern.onrender.com/api/auth/reset-password',
         {
           email: formData.email,
           otp: formData.otp,

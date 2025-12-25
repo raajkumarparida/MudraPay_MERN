@@ -19,7 +19,7 @@ const UserRedemptionTracker = ({ userData }) => {
     try {
       setLoading(true);
       const response = await axios.get(
-        'http://localhost:8000/api/cashback/my-redemptions',
+        'https://mudrapay-mern.onrender.com/api/cashback/my-redemptions',
         { withCredentials: true }
       );
 

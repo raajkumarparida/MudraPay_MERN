@@ -16,7 +16,7 @@ connectDB();
 app.use(cors({
     origin: [
         "http://localhost:5173",              // local dev (Vite)
-        "https://mudrapay.vercel.app"       // ✅ your Vercel frontend URL
+        "https://mudra-pay-mern.vercel.app"       // ✅ your Vercel frontend URL
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
